@@ -1,0 +1,88 @@
+﻿//PUT _template/es_info
+{
+  "order": 0,
+  "template": "es.info.*",
+  "settings": {
+    "index": {
+      "number_of_shards": "1",
+      "number_of_replicas": "1"
+    }
+  },
+  "mappings": {
+    "InformationBase": {
+      "properties": {
+        "Title": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        },
+        "Attachments": {
+          "type": "keyword"
+        },
+        "Values": {
+          "type": "keyword"
+        },
+        "ItemId": {
+          "type": "keyword"
+        }
+      }
+    },
+    "Note": {
+      "properties": {
+        "NoteBody": {
+          "type": "text"
+        }
+      }
+    },
+    "Group": {
+      "properties": {
+        "GroupFunction": {
+          "type": "keyword"
+        },
+        "GroupOwner": {
+          "type": "keyword"
+        }
+      }
+    },
+    "GroupMember": {
+      "properties": {
+        "ExclusionFlag": {
+          "type": "boolean"
+        },
+        "Maximum": {
+          "type": "double"
+        },
+        "Minimum": {
+          "type": "double"
+        },
+        "Weight": {
+          "type": "double"
+        }
+      }
+    },
+    "TimeStamper": {
+      "properties": {
+        "LastModified": {
+          "format": "strict_date_optional_time||epoch_millis",
+          "type": "date"
+        },
+        "CreatedBy": {
+          "type": "keyword"
+        },
+        "ModifiedBy": {
+          "type": "keyword"
+        },
+        "Created": {
+          "format": "strict_date_optional_time||epoch_millis",
+          "type": "date"
+        }
+      }
+    }
+  },
+  "aliases": {
+    "es_info": {}
+  }
+}
